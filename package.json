@@ -1,0 +1,12 @@
+{
+  "name": "sarahfy",
+  "version": "1.0.0",
+  "description": "annoy your UX lead",
+  "main": "index.js",
+  "repository": "git@github.com:cwmoo740/sarahfy.git",
+  "author": "cwmoo740",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.3.1"
+  }
+}
