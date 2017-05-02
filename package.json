@@ -6,7 +6,10 @@
   "repository": "git@github.com:cwmoo740/sarahfy.git",
   "author": "cwmoo740",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
-    "typescript": "^2.3.1"
+    "typescript": "^2.3.2"
   }
 }
