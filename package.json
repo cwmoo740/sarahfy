@@ -2,16 +2,18 @@
   "name": "sarahfy",
   "version": "0.0.1",
   "description": "annoy your UX lead",
-  "main": "dist/index.js",
-  "jsnext:main":"dist/index.js",
-  "module":"dist/index.js",
+  "main": "lib/index.js",
+  "jsnext:main": "lib/index.js",
+  "module": "lib/index.js",
   "repository": "git@github.com:cwmoo740/sarahfy.git",
   "author": "cwmoo740",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "preversion": "yarn run build",
-    "postversion": "git add package.json && git push && git push --tags"
+    "postversion": "git add package.json && git push && git push --tags",
+    "prepublishOnly": "yarn run build -- --outDir lib",
+    "postpublish": "git clean -fd"
   },
   "devDependencies": {
     "typescript": "^2.3.2"
