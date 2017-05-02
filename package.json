@@ -12,8 +12,7 @@
     "build": "tsc",
     "preversion": "yarn run build",
     "postversion": "git add package.json && git push && git push --tags",
-    "prepublishOnly": "yarn run build -- --outDir lib",
-    "postpublish": "git clean -fd"
+    "prepublishOnly": "yarn run build -- --outDir lib"
   },
   "devDependencies": {
     "typescript": "^2.3.2"
