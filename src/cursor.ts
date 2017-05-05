@@ -15,7 +15,7 @@ export function mouseOver(event: MouseEvent) {
         }
     }, 1000);
 }
-export function runAway(root: Node, classes?: string[]) {
+export function runAway(root: Node, classes?: string[], probability = 0.5) {
     const walker = document.createTreeWalker(
         root,
         NodeFilter.SHOW_ELEMENT,
@@ -28,6 +28,7 @@ export function runAway(root: Node, classes?: string[]) {
                 if (result && classes && classes.length) {
                     result = classes.some(cls => elem.classList.contains(cls));
                 }
+                result = result && Math.random() > probability;
                 return result ?
                     NodeFilter.FILTER_ACCEPT :
                     NodeFilter.FILTER_REJECT;

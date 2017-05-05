@@ -1,7 +1,7 @@
 type RGB = [number, number, number];
-function randomColor(color: RGB): string {
+function randomColor(color: RGB, distance = 32): string {
     return color
-        .map<number>(c => Math.min(Math.max(0, Math.floor((Math.random() * 64)) + c), 255))
+        .map<number>(c => Math.min(Math.max(0, Math.floor((Math.random() * distance)) + c), 255))
         .join(', ')
 }
 
@@ -24,7 +24,7 @@ export function alterColor(color: string): string {
 
     return color;
 }
-export function scrambleColors(root: Node, classes?: string[]) {
+export function scrambleColors(root: Node, classes?: string[], probability = 0.5) {
     const walker = document.createTreeWalker(
         root,
         NodeFilter.SHOW_ELEMENT,
@@ -39,6 +39,7 @@ export function scrambleColors(root: Node, classes?: string[]) {
                 if (result && classes && classes.length) {
                     result = classes.some(cls => elem.classList.contains(cls));
                 }
+                result = result && Math.random() > probability;
                 return result ?
                     NodeFilter.FILTER_ACCEPT :
                     NodeFilter.FILTER_SKIP;
@@ -62,12 +63,7 @@ export function scrambleColors(root: Node, classes?: string[]) {
     }
     map.forEach((style, node) => {
         if (style.backgroundColor) {
-
             node.style.backgroundColor = alterColor(style.backgroundColor);
-            if (node.tagName === 'P') {
-                console.log(node, style.backgroundColor);
-                console.log(node.style.backgroundColor);
-            }
         }
         if (style.color) {
             node.style.color = alterColor(style.color);
