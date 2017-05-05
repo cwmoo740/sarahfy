@@ -27,7 +27,7 @@ export function moveRandomElements(root: Node, classes?: string[], probability: 
                 } else if (Math.random() < probability) {
                     return NodeFilter.FILTER_ACCEPT;
                 } else {
-                    return NodeFilter.FILTER_REJECT;
+                    return NodeFilter.FILTER_SKIP;
                 }
             }
         }

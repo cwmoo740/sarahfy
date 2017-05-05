@@ -31,15 +31,14 @@ export function scrambleColors(root: Node, classes?: string[], probability = 0.5
         {
             acceptNode(node: Node): number{
                 const elem = node as HTMLElement;
-                let result = elem.tagName !== 'P' &&
-                    !elem.tagName.includes('H') &&
-                    elem.tagName !== 'DIV' &&
-                    elem.tagName !== 'DIV' &&
-                    elem.tagName !== 'A';
+                let result = elem.tagName === 'P' ||
+                    elem.tagName.includes('H') ||
+                    elem.tagName === 'DIV' ||
+                    elem.tagName === 'A';
                 if (result && classes && classes.length) {
                     result = classes.some(cls => elem.classList.contains(cls));
                 }
-                result = result && Math.random() > probability;
+                result = result && Math.random() < probability;
                 return result ?
                     NodeFilter.FILTER_ACCEPT :
                     NodeFilter.FILTER_SKIP;

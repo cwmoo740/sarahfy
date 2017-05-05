@@ -24,14 +24,15 @@ export function runAway(root: Node, classes?: string[], probability = 0.5) {
                 const elem = node as HTMLElement;
                 let result = elem.tagName === 'A' ||
                     elem.tagName === 'BUTTON' ||
+                    elem.children.length === 1 ||
                     elem.tagName === 'INPUT';
                 if (result && classes && classes.length) {
                     result = classes.some(cls => elem.classList.contains(cls));
                 }
-                result = result && Math.random() > probability;
+                result = result && Math.random() < probability;
                 return result ?
                     NodeFilter.FILTER_ACCEPT :
-                    NodeFilter.FILTER_REJECT;
+                    NodeFilter.FILTER_SKIP;
             }
         }
     );
