@@ -1,5 +1,5 @@
 type RGB = [number, number, number];
-function randomColor(color: RGB, distance = 32): string {
+function randomColor(color: RGB, distance = 64): string {
     return color
         .map<number>(c => Math.min(Math.max(0, Math.floor((Math.random() * distance)) + c), 255))
         .join(', ')
