@@ -1,6 +1,6 @@
 {
   "name": "sarahfy",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "annoy your UX lead",
   "main": "lib/index.js",
   "jsnext:main": "lib/index.js",
